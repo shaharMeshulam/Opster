@@ -1,0 +1,13 @@
+<div *ngIf="contacts | async as contacts; else spinner">
+    <h2 *ngIf="!contacts.length"> No Contacts Found</h2>
+    <ul class="contact-list">
+        <li *ngFor="let contact of contacts">
+            <app-contact [contact]="contact"></app-contact>
+        </li>
+    </ul>
+</div>
+<ng-template #spinner>
+    <div class="spinner-container">
+        <app-loading-spinner></app-loading-spinner>
+    </div>
+</ng-template>

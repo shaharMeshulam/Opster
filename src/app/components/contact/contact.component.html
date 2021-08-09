@@ -1,0 +1,18 @@
+<div class="contact">
+    <div class="contact-img">
+        <img [src]="contact?.profile_image"/>
+    </div>
+    <div class="contact-container">
+        <i class="icon">
+            <img [src]="contact?.icon"/>
+        </i>
+        <div class="contact-details">
+            <div class="name">{{contact?.name}}</div>
+            <div class="job-title">{{contact?.job}} | @{{contact?.company_name}}</div>
+        </div>
+        <div class="contact-extra-details">
+            <div class="phone">Phone Number {{contact?.phone}}</div>
+            <div class="email">{{contact?.email}}</div>
+        </div>
+    </div>
+</div>
