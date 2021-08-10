@@ -12,13 +12,14 @@ export class ContactsService {
 
   constructor(private http: HttpClient, private serachService: SearchService) { }
 
-  fetchContacts(): Observable<Contact[]> {
-    return this.http.get<Contact[]>('https://candidate-test.herokuapp.com/contacts');
-  }
-
+  
   filter():Observable<Contact[]> {
-    return combineLatest([this.serachService.query, this.fetchContacts()])
+    return combineLatest([this.serachService.query, this._fetchContacts()])
     .pipe(map(([query, contacts]) => contacts.filter(contact => this._contactIncludes(query, contact))));
+  }
+  
+  private _fetchContacts(): Observable<Contact[]> {
+    return this.http.get<Contact[]>('https://candidate-test.herokuapp.com/contacts');
   }
 
   private _contactIncludes(query: string, contact: Contact): Boolean {
